@@ -1,0 +1,29 @@
+FROM oven/bun:latest AS builder
+
+WORKDIR /tmp
+
+RUN apt-get update && apt-get install -y dumb-init && rm -rf /var/lib/apt/lists/*
+
+COPY bun.lock package.json ./
+
+COPY . .
+
+RUN bun install --frozen-lockfile
+
+FROM oven/bun:slim AS runtime
+
+WORKDIR /app
+
+COPY --from=builder /usr/bin/dumb-init /usr/bin/dumb-init
+COPY --from=builder /tmp/monorepo/apps/api /app/monorepo/apps/api
+COPY --from=builder /tmp/monorepo/packages /app/monorepo/packages
+COPY --from=builder /tmp/node_modules /app/node_modules
+
+RUN chown -R bun:bun /app/
+
+USER bun
+
+WORKDIR /app/monorepo/apps/api
+
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["bun", "run", "src/index.ts"]

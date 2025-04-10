@@ -1,0 +1,15 @@
+{
+  "background_color": "#F5F5F5",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "vite.svg",
+      "type": "image/svg+xml"
+    }
+  ],
+  "name": "MY_APP_NAME",
+  "short_name": "MY_APP_NAME",
+  "start_url": ".",
+  "theme_color": "#14B8A6",
+  "description": "MY_APP_DESCRIPTION"
+}

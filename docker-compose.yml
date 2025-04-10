@@ -1,0 +1,32 @@
+services:
+  ui:
+    build:
+      context: .
+      dockerfile: monorepo/tooling/docker/Dockerfile.ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    networks:
+      - app-network
+    env_file:
+      - monorepo/apps/ui/.env.local
+
+  api:
+    build:
+      context: .
+      dockerfile: monorepo/tooling/docker/Dockerfile.api
+    environment:
+      - COMMIT_HASH=commit_hash
+      - HOSTNAME=0.0.0.0
+      - NODE_ENV=production
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    env_file:
+      - monorepo/apps/api/.env.local
+
+networks:
+  app-network:
+    driver: bridge

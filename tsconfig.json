@@ -1,0 +1,15 @@
+{
+  "extends": "tsconfig-moon",
+  "files": [],
+  "references": [
+    {
+      "path": "./monorepo/apps/ui"
+    },
+    {
+      "path": "./monorepo/apps/api"
+    },
+    {
+      "path": "./monorepo/packages/some-example"
+    }
+  ]
+}

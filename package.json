@@ -1,0 +1,25 @@
+{
+  "name": "@monorepo/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "bun@1.2.5",
+  "workspaces": ["./monorepo/apps/*", "./monorepo/packages/*"],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test:unit": "turbo run test:unit",
+    "fix:biome": "bun run --bun biome check --write --unsafe",
+    "fix:sherif": "sherif --fix",
+    "precommit": "bun run fix:biome && bun run fix:sherif"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1",
+    "@types/bun": "latest",
+    "sherif": "^1",
+    "tsconfig-moon": "^1",
+    "turbo": "^2",
+    "typescript": "^5"
+  }
+}

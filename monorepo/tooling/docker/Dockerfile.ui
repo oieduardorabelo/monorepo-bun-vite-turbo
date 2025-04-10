@@ -1,0 +1,25 @@
+FROM oven/bun:latest AS builder
+
+WORKDIR /tmp
+
+RUN apt-get update && apt-get install -y dumb-init && rm -rf /var/lib/apt/lists/*
+
+COPY bun.lock package.json ./
+
+COPY . .
+
+RUN bun install --frozen-lockfile && bun run build
+
+FROM nginx:alpine  AS runtime
+
+WORKDIR /app
+
+COPY --from=builder /usr/bin/dumb-init /usr/bin/dumb-init
+COPY --from=builder /tmp/monorepo/apps/ui/dist /usr/share/nginx/html
+COPY --from=builder /tmp/monorepo/tooling/nginx/nginx.ui.conf /etc/nginx/conf.d/default.conf
+
+RUN chown -R nginx:nginx /app/ /etc/nginx/conf.d/ /var/cache/nginx/ /var/run/
+
+USER nginx
+
+CMD ["nginx", "-g", "daemon off;"] 

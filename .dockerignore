@@ -1,0 +1,11 @@
+!.env-example
+.dockerignore
+.env*
+.git
+.gitignore
+.turbo/
+.vscode
+*.tsbuildinfo
+dist/
+node_modules/
+README.md
