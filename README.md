@@ -23,6 +23,19 @@ For production build:
 - The API runs on a Docker and requires a reverse proxy to access it
 - You must proxy `{UI_URL}/api` to `{API_URL}`
 
+## production environment simulation
+
+This template includes a `docker-compose.yml` file to simulate a production environment.
+
+```bash
+docker compose up -d
+```
+
+This will start the API and UI in Docker containers and proxy the UI to the API using `nginx`.
+
+- The [UI Dockerfile](monorepo/tooling/docker/Dockerfile.ui) is an example of how to serve the UI statically, we do not recommend this approach for production
+- The [API Dockerfile](monorepo/tooling/docker/Dockerfile.api) is ready for production build and deployment
+
 ## monorepo tasks
 
 We define monorepo tasks in `turbo.json` and run them with `bun turbo <task>`.
