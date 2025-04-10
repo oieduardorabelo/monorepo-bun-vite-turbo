@@ -28,7 +28,7 @@ For production build:
 This template includes a `docker-compose.yml` file to simulate a production environment.
 
 ```bash
-docker compose up -d
+docker compose up
 ```
 
 This will start the API and UI in Docker containers and proxy the UI to the API using `nginx`.
