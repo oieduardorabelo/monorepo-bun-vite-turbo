@@ -5,19 +5,28 @@
   "type": "module",
   "packageManager": "bun@1.2.5",
   "workspaces": ["./monorepo/apps/*", "./monorepo/packages/*"],
+  "simple-git-hooks": {
+    "pre-commit": "bunx --bun lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "biome check --write --unsafe"
+  },
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "test:unit": "turbo run test:unit",
-    "fix:biome": "bun run --bun biome check --write --unsafe",
-    "fix:sherif": "sherif --fix",
-    "precommit": "bun run fix:biome && bun run fix:sherif"
+    "fix:biome": "bunx --bun biome check --write --unsafe",
+    "fix:sherif": "bunx --bun sherif --fix",
+    "doctor": "bun run fix:biome && bun run fix:sherif",
+    "postinstall": "bun .monorepo/scripts/postinstall.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^1",
     "@types/bun": "latest",
+    "lint-staged": "^15",
     "sherif": "^1",
+    "simple-git-hooks": "^2",
     "tsconfig-moon": "^1",
     "turbo": "^2",
     "typescript": "^5"
