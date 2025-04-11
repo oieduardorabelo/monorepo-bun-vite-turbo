@@ -8,7 +8,7 @@
     "build": "bunx --bun tsc && bunx --bun vite build",
     "preview": "bunx --bun vite preview",
     "test:unit": "bun test --env-file=.env.local __tests__/unit",
-    "typecheck": "bunx --bun tsc --noEmit"
+    "typecheck": "bunx --bun tsc"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.3",

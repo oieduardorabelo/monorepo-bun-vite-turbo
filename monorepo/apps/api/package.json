@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "bun run --hot --no-clear-screen src/index.ts",
     "test:unit": "bun test --env-file=.env.local __tests__/unit",
-    "typecheck": "bunx --bun tsc --noEmit"
+    "typecheck": "bunx --bun tsc"
   },
   "dependencies": {
     "@monorepo/packages-some-example": "workspace:*",

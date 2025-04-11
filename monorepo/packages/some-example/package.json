@@ -4,6 +4,10 @@
   "private": true,
   "type": "module",
   "main": "src/index.ts",
+  "scripts": {
+    "build": "bunx --bun tsc",
+    "typecheck": "bunx --bun tsc"
+  },
   "devDependencies": {
     "@tsconfig/bun": "^1.0.7",
     "typescript": "^5.8.3"
