@@ -1,11 +1,12 @@
+import { TIMING } from "@monorepo/packages-timing";
 import type { Context } from "hono";
 import * as honoCookie from "hono/cookie";
 import type { CookieOptions } from "hono/utils/cookie";
 import { env } from "../config/env";
 
 const cookieOptions: CookieOptions = {
-  expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 1), // 1 day
   httpOnly: true,
+  maxAge: TIMING.days(1).seconds,
   path: "/",
   sameSite: "Lax",
   secure: env.IS_PRODUCTION,

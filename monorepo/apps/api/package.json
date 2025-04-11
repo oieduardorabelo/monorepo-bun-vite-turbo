@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@monorepo/packages-some-example": "workspace:*",
+    "@monorepo/packages-timing": "workspace:*",
     "hono": "^4",
     "http-status-ts": "^2",
     "pino": "^9",

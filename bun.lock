@@ -19,6 +19,7 @@
       "version": "0.0.0",
       "dependencies": {
         "@monorepo/packages-some-example": "workspace:*",
+        "@monorepo/packages-timing": "workspace:*",
         "hono": "^4",
         "http-status-ts": "^2",
         "pino": "^9",
@@ -61,6 +62,13 @@
     },
     "monorepo/packages/some-example": {
       "name": "@monorepo/packages-some-example",
+      "version": "0.0.0",
+      "devDependencies": {
+        "@tsconfig/bun": "^1",
+      },
+    },
+    "monorepo/packages/timing": {
+      "name": "@monorepo/packages-timing",
       "version": "0.0.0",
       "devDependencies": {
         "@tsconfig/bun": "^1",
@@ -199,6 +207,8 @@
     "@monorepo/apps-ui": ["@monorepo/apps-ui@workspace:monorepo/apps/ui"],
 
     "@monorepo/packages-some-example": ["@monorepo/packages-some-example@workspace:monorepo/packages/some-example"],
+
+    "@monorepo/packages-timing": ["@monorepo/packages-timing@workspace:monorepo/packages/timing"],
 
     "@remix-run/node": ["@remix-run/node@2.16.5", "", { "dependencies": { "@remix-run/server-runtime": "2.16.5", "@remix-run/web-fetch": "^4.4.2", "@web3-storage/multipart-parser": "^1.0.0", "cookie-signature": "^1.1.0", "source-map-support": "^0.5.21", "stream-slice": "^0.1.2", "undici": "^6.21.2" }, "peerDependencies": { "typescript": "^5.1.0" }, "optionalPeers": ["typescript"] }, "sha512-awunS1kgFmc8q7sGz7FpGf66RXQm2Vw0yk5IFTIJa0WdQrskqyF/6CO+tEf/0np/OCu2fQ23+EfxY2qGHm1aOg=="],
 
