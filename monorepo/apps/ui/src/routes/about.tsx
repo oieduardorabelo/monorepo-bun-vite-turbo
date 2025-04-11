@@ -1,6 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { createFileRoute } from "@tanstack/react-router";
-import { echoInput, useEcho } from "../features/about/use-api-echo";
+import { echoInput, useEcho } from "../domains/about/use-api-echo";
 
 export const Route = createFileRoute("/about")({
   component: RouteComponent,

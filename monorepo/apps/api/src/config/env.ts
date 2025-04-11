@@ -3,15 +3,9 @@ import { z } from "zod";
 
 const { APP_NAME, APP_SECRET_SIGNING_KEY, NODE_ENV, PORT, LOG_LEVEL, HOSTNAME } = process.env;
 
-const pkgjsonFile = Bun.file(`${import.meta.dir}/../../package.json`);
-const pkgjson = await pkgjsonFile.json();
-
-const APP_VERSION = pkgjson.version;
-
 const fromProcessEnvSchema = z.object({
   APP_NAME: z.string(),
   APP_SECRET_SIGNING_KEY: z.string(),
-  APP_VERSION: z.string(),
   HOSTNAME: z.string(),
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error", "fatal", "silent"]).default("debug"),
   NODE_ENV: z.enum(["development", "production", "test"]),
@@ -21,14 +15,19 @@ const fromProcessEnvSchema = z.object({
 const fromProcessEnvParsed = fromProcessEnvSchema.parse({
   APP_NAME,
   APP_SECRET_SIGNING_KEY,
-  APP_VERSION,
   HOSTNAME,
   LOG_LEVEL,
   NODE_ENV,
   PORT,
 });
 
+const pkgjsonFile = Bun.file(`${import.meta.dir}/../../package.json`);
+const pkgjson = await pkgjsonFile.json();
+
+const APP_VERSION = pkgjson.version;
+
 const internalEnvSchema = fromProcessEnvSchema.extend({
+  APP_VERSION: z.string(),
   COMMIT_HASH: z.string(),
   IS_DEVELOPMENT: z.boolean(),
   IS_PRODUCTION: z.boolean(),
@@ -45,6 +44,7 @@ const COMMIT_HASH = IS_PRODUCTION
 
 export const env = internalEnvSchema.parse({
   ...fromProcessEnvParsed,
+  APP_VERSION,
   IS_PRODUCTION,
   IS_DEVELOPMENT,
   IS_TEST,

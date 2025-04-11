@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useApiHealthcheck } from "../features/home/use-api-healthcheck";
+import { useApiHealthcheck } from "../domains/home/use-api-healthcheck";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,

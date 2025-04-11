@@ -1,6 +1,9 @@
-!.env-example
+# files to ignore
 .env*
 .turbo/
 *.tsbuildinfo
 dist/
 node_modules/
+
+# files to keep
+!.env-example

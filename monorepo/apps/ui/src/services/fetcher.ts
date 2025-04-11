@@ -1,8 +1,8 @@
 import axios from "axios";
-import { VITE_API_URL } from "../config/env";
+import { env } from "../config/env";
 
 export const fetcher = axios.create({
-  baseURL: VITE_API_URL,
+  baseURL: env.VITE_API_URL,
   timeout: 3000, // 3 seconds
   headers: {
     "content-type": "application/json",
