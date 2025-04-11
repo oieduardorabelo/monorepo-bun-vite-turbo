@@ -39,9 +39,9 @@ const IS_PRODUCTION = fromProcessEnvParsed.NODE_ENV === "production";
 const IS_DEVELOPMENT = fromProcessEnvParsed.NODE_ENV === "development";
 const IS_TEST = fromProcessEnvParsed.NODE_ENV === "test";
 
-const COMMIT_HASH = IS_DEVELOPMENT
-  ? Bun.spawnSync(["git", "rev-parse", "HEAD"]).stdout.toString().trim().slice(0, 8)
-  : process.env.COMMIT_HASH;
+const COMMIT_HASH = IS_PRODUCTION
+  ? process.env.COMMIT_HASH
+  : Bun.spawnSync(["git", "rev-parse", "HEAD"]).stdout.toString().trim().slice(0, 8);
 
 export const env = internalEnvSchema.parse({
   ...fromProcessEnvParsed,
