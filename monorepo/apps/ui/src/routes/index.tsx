@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import LandingPage from "../components/landing-page";
 import { useApiHealthcheck } from "../domains/home/use-api-healthcheck";
 
 export const Route = createFileRoute("/")({
@@ -12,9 +13,7 @@ function RouteComponent() {
       <h3>Welcome Home!</h3>
       {qApiHealthcheck.isLoading ? <span>Loading...</span> : null}
       {qApiHealthcheck.isError ? <span>Error</span> : null}
-      {qApiHealthcheck.isSuccess ? (
-        <pre>{JSON.stringify(qApiHealthcheck.data, null, 2)}</pre>
-      ) : null}
+      {qApiHealthcheck.isSuccess ? <LandingPage /> : null}
     </div>
   );
 }

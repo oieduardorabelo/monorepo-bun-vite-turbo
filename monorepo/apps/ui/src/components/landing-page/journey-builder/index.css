@@ -1,0 +1,114 @@
+@import url("./xy-theme.css");
+
+html,
+body {
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.dndflow {
+  flex-direction: column;
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.dndflow aside {
+  border-right: 1px solid #eee;
+  padding: 15px 10px;
+  font-size: 12px;
+  background: #fcfcfc;
+}
+
+.dndflow aside .description {
+  margin-bottom: 10px;
+}
+
+.dndflow .dndnode {
+  height: 20px;
+  padding: 4px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+}
+
+.dndflow .dndnode.action {
+  border-color: #14b8a6;
+}
+
+.dndflow .dndnode.segment {
+  border-color: #0ea5e9;
+}
+
+.dndflow .dndnode.smart {
+  border-color: #0ea5e9;
+}
+
+.dndflow .dndnode.email {
+  border-color: #d946ef;
+}
+
+.dndflow .dndnode.wait {
+  border-color: #f59e0b;
+}
+
+.dndflow {
+  display: flex;
+  width: 100vw;
+  height: 100vh; /* Ensure full height */
+}
+
+.reactflow-wrapper {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.dndflow .selectall {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .dndflow {
+    flex-direction: row-reverse;
+  }
+
+  .dndflow aside {
+    width: 20%;
+    max-width: 250px;
+  }
+}
+
+.updatenode_controls {
+  width: 12%;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: #fcfcfc;
+  border-left: 1px solid #eee;
+}
+
+input {
+  margin-top: 15px;
+  height: 30px;
+  border: none;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
